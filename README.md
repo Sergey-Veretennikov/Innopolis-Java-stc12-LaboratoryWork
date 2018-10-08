@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Sergey-Veretennikov/Innopolis-Java-stc12-LaboratoryWork.svg?branch=develop)](https://travis-ci.org/Sergey-Veretennikov/Innopolis-Java-stc12-LaboratoryWork)
+
 ## "Разработчик программного обеспечения с применением технологий Java Enterprise Edition"
 
 **Группа stc12**
