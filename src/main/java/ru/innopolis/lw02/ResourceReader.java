@@ -1,7 +1,7 @@
-package lw02;
+package ru.innopolis.lw02;
 
-import lw02.exception.NotResourceException;
 import org.apache.log4j.Logger;
+import ru.innopolis.lw02.exception.NotResourceException;
 
 import java.io.File;
 import java.net.MalformedURLException;

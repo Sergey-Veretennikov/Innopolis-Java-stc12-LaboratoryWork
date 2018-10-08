@@ -1,4 +1,4 @@
-package lw02;
+package ru.innopolis.lw02;
 
 import java.net.URL;
 

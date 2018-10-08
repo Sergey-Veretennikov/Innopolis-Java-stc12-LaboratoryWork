@@ -1,7 +1,5 @@
 package ru.innopolis.lw02;
 
-import lw02.RepositoryResources;
-import lw02.ResourceReader;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
