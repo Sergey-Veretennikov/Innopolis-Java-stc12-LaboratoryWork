@@ -77,7 +77,7 @@ public class ResourceHandler implements Runnable {
         stringResultBlockingQueue.put("EXIT");
     }
 
-    private Thread exit() {
+    private Runnable exit() {
         return new Thread(() -> {
             try {
                 stringResultBlockingQueue.put("EXIT");
@@ -88,7 +88,7 @@ public class ResourceHandler implements Runnable {
         });
     }
 
-    private Thread analyzes(List<String> list, RepositoryResources repositoryResources) {
+    private Runnable analyzes(List<String> list, RepositoryResources repositoryResources) {
         return new Thread(() -> {
             for (String stringLine : new ArrayList<>(list)) {
                 String[] strings = stringLine.split("([.!?;]\\\\s|\"|<|>|\\\\n|\\\\r)");//([A-Z|А-Я|Ё]{1}[а-я|ё|\w\s,-;:\(\)]+[\.\?\!]) [.!?;]\\s|\"|<|>|\\n|\\r
