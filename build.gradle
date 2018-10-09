@@ -33,6 +33,6 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.10.0'
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
     // https://mvnrepository.com/artifact/org.awaitility/awaitility
-    testCompile group: 'org.awaitility', name: 'awaitility', version: '3.0.0'
+   // testCompile group: 'org.awaitility', name: 'awaitility', version: '3.0.0'
 
 }
