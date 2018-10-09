@@ -6,17 +6,21 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ResourceReaderTest {
+class ResourceHandlerTest {
     private static final Logger LOGGER = Logger.getLogger(ResourceReaderTest.class);
     private static final BlockingQueue<RepositoryResources> resourcesBlockingQueue = new ArrayBlockingQueue<>(10);
+    private static final BlockingQueue<String> stringResultBlockingQueue = new ArrayBlockingQueue<>(10);
+    private final String[] words = {"little", "Xhmkuiapy", "DISAPPEARS"};
     private final String PATH1 = "file:C://ResourceLab/stevenson_treasure_island_txt.txt";
     private final String PATH2 = "file:C://ResourceLab/stoker_dracula_txt.txt";
     private final String PATH3 = "file:C://ResourceLab/twain_tom_sawyer_txt.txt";
     private ResourceReader resourceReader;
+    private ResourceHandler resourceHandler;
 
     @BeforeEach
     void setUpClass() {
@@ -25,36 +29,23 @@ class ResourceReaderTest {
         new Thread(resourceReader).start();
     }
 
+
     @Test
-    void checksSizeOfBlockingQueueTest() {
+    void checksSizeOfResultBlockingQueueTest() {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 3; i++) {
+            executorService.submit(new ResourceHandler(resourcesBlockingQueue, stringResultBlockingQueue, words));
+        }
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             LOGGER.error(e.getMessage(), e);
         }
-        assertEquals(3, resourcesBlockingQueue.size());
+        assertEquals(0, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
+        LOGGER.warn(stringResultBlockingQueue.toString());
     }
 
-    @Test
-    void checksTheElementBlockingQueueTest() throws InterruptedException {
-        String[] path = new String[3];
-        for (int i = 0; i < 3; i++) {
-            path[i] = resourcesBlockingQueue.take().getUrll().toString();
-        }
-        assertEquals(PATH1, path[0]);
-        assertEquals(PATH2, path[1]);
-        assertEquals(PATH3, path[2]);
-        LOGGER.warn(resourcesBlockingQueue.toString());
-    }
-
-    @Test
-    void checksEmptyOfBlockingQueueTest() throws InterruptedException {
-        String[] path = new String[3];
-        for (int i = 0; i < 3; i++) {
-            path[i] = resourcesBlockingQueue.take().getUrll().toString();
-        }
-        assertTrue(resourcesBlockingQueue.isEmpty());
-        LOGGER.warn(resourcesBlockingQueue.toString());
-    }
 }
