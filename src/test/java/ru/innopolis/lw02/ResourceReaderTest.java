@@ -35,25 +35,25 @@ class ResourceReaderTest {
         LOGGER.warn(resourcesBlockingQueue.toString());
     }
 
-//    @Test
-//    void checksTheElementBlockingQueueTest() throws InterruptedException {
-//        String[] path = new String[3];
-//        for (int i = 0; i < 3; i++) {
-//            path[i] = resourcesBlockingQueue.take().getUrll().toString();
-//        }
-//        assertEquals(PATH1, path[0]);
-//        assertEquals(PATH2, path[1]);
-//        assertEquals(PATH3, path[2]);
-//        LOGGER.warn(resourcesBlockingQueue.toString());
-//    }
-//
-//    @Test
-//    void checksEmptyOfBlockingQueueTest() throws InterruptedException {
-//        String[] path = new String[3];
-//        for (int i = 0; i < 3; i++) {
-//            path[i] = resourcesBlockingQueue.take().getUrll().toString();
-//        }
-//        assertTrue(resourcesBlockingQueue.isEmpty());
-//        LOGGER.warn(resourcesBlockingQueue.toString());
-//    }
+    @Test
+    void checksTheElementBlockingQueueTest() throws InterruptedException {
+        String[] path = new String[3];
+        for (int i = 0; i < 3; i++) {
+            path[i] = resourcesBlockingQueue.take().getUrll().toString();
+        }
+        assertEquals(PATH1, path[0]);
+        assertEquals(PATH2, path[1]);
+        assertEquals(PATH3, path[2]);
+        LOGGER.warn(resourcesBlockingQueue.toString());
+    }
+
+    @Test
+    void checksEmptyOfBlockingQueueTest() throws InterruptedException {
+        String[] path = new String[3];
+        for (int i = 0; i < 3; i++) {
+            path[i] = resourcesBlockingQueue.take().getUrll().toString();
+        }
+        assertTrue(resourcesBlockingQueue.isEmpty());
+        LOGGER.warn(resourcesBlockingQueue.toString());
+    }
 }
