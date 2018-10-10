@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ResourceReaderTest {
     private static final Logger LOGGER = Logger.getLogger(ResourceReaderTest.class);
     private static final BlockingQueue<RepositoryResources> resourcesBlockingQueue = new ArrayBlockingQueue<>(10);
-    private final String PATH1 = "file:C://ResourceLab/stevenson_treasure_island_txt.txt";
-    private final String PATH2 = "file:C://ResourceLab/stoker_dracula_txt.txt";
-    private final String PATH3 = "file:C://ResourceLab/twain_tom_sawyer_txt.txt";
+    private final String PATH1 = "file:" + "stevenson_treasure_island_txt.txt";
+    private final String PATH2 = "file:" + "stoker_dracula_txt.txt";
+    private final String PATH3 = "file:" + "twain_tom_sawyer_txt.txt";
     private ResourceReader resourceReader;
 
     @BeforeEach
