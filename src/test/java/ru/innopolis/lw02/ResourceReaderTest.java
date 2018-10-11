@@ -22,11 +22,12 @@ class ResourceReaderTest {
     void setUpClass() {
         LOGGER.warn("\u001B[34m" + "Test starting" + "\u001B[0m");
         resourceReader = new ResourceReader(new String[]{PATH1, PATH2, PATH3}, resourcesBlockingQueue);
-        new Thread(resourceReader).start();
+        //        new Thread(resourceReader).start();
     }
 
     @Test
     void checksSizeOfBlockingQueueTest() {
+        resourceReader.run();
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -38,6 +39,7 @@ class ResourceReaderTest {
 
     @Test
     void checksTheElementBlockingQueueTest() throws InterruptedException {
+        resourceReader.run();
         String[] path = new String[3];
         for (int i = 0; i < 3; i++) {
             path[i] = resourcesBlockingQueue.take().getUrll().toString();
@@ -50,6 +52,7 @@ class ResourceReaderTest {
 
     @Test
     void checksEmptyOfBlockingQueueTest() throws InterruptedException {
+        resourceReader.run();
         String[] path = new String[3];
         for (int i = 0; i < 3; i++) {
             path[i] = resourcesBlockingQueue.take().getUrll().toString();

@@ -13,7 +13,7 @@ import java.util.concurrent.BlockingQueue;
  * и складывает туда информацию, полученную по ссылке. Далее эти объекты складываем в ArrayBlockingQueue.
  * - В зависимости от размера файла присваиваем ему характеристику Small file или Large file
  */
-public class ResourceReader implements Runnable {
+class ResourceReader implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(ResourceReader.class);
     private final String[] sources;
     private final BlockingQueue<RepositoryResources> resourcesBlockingQueue;
@@ -22,10 +22,6 @@ public class ResourceReader implements Runnable {
     public ResourceReader(String[] sources, BlockingQueue<RepositoryResources> resourcesBlockingQueue) {
         this.sources = sources;
         this.resourcesBlockingQueue = resourcesBlockingQueue;
-    }
-
-    BlockingQueue<RepositoryResources> getResourcesBlockingQueue() {
-        return resourcesBlockingQueue;
     }
 
     @Override

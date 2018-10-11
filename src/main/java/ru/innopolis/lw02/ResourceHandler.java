@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * скачивает и в зависимости от характеристики Small file или Large file обрабатывает его в одном или нескольких
  * потоках, результат складывает в другую ArrayBlockingQueue.
  */
-public class ResourceHandler implements Runnable {
+class ResourceHandler implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(ResourceHandler.class);
     private final BlockingQueue<RepositoryResources> resourcesBlockingQueue;
     private final BlockingQueue<String> stringResultBlockingQueue;

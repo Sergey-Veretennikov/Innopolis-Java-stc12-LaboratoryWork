@@ -26,12 +26,13 @@ class ResourceHandlerTest {
     void setUpClass() {
         LOGGER.warn("\u001B[34m" + "Test starting" + "\u001B[0m");
         resourceReader = new ResourceReader(new String[]{PATH1, PATH2, PATH3}, resourcesBlockingQueue);
-        new Thread(resourceReader).start();
+//        new Thread(resourceReader).start();
     }
 
 
     @Test
     void checksSizeOfResultBlockingQueueTest() {
+        resourceReader.run();
 
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 3; i++) {
