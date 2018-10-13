@@ -1,4 +1,4 @@
-package lw02.exception;
+package ru.innopolis.lw02.exception;
 
 public class NotResourceException extends Exception {
     public NotResourceException(String message) {

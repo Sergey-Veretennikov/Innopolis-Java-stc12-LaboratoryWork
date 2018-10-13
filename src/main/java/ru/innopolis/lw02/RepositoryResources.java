@@ -1,11 +1,11 @@
-package lw02;
+package ru.innopolis.lw02;
 
 import java.net.URL;
 
 /**
  * При создании объект класса, хранит всю информацию о входном ресурсе
  */
-public class RepositoryResources {
+class RepositoryResources {
     private String fileSize;
     private URL urll;
 
