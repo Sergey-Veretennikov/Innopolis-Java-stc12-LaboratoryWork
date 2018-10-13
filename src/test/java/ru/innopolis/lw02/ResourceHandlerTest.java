@@ -3,6 +3,7 @@ package ru.innopolis.lw02;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -10,6 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ResourceHandlerTest {
     private static final Logger LOGGER = Logger.getLogger(ResourceReaderTest.class);
@@ -26,12 +28,11 @@ class ResourceHandlerTest {
     void setUpClass() {
         LOGGER.warn("\u001B[34m" + "Test starting" + "\u001B[0m");
         resourceReader = new ResourceReader(new String[]{PATH1, PATH2, PATH3}, resourcesBlockingQueue);
-//        new Thread(resourceReader).start();
     }
 
 
     @Test
-    void checksSizeOfResultBlockingQueueTest() {
+    void checksSizeOfResourcesBlockingQueueTest() {
         resourceReader.run();
 
         ExecutorService executorService = Executors.newFixedThreadPool(10);
@@ -39,14 +40,24 @@ class ResourceHandlerTest {
             executorService.submit(new ResourceHandler(resourcesBlockingQueue, stringResultBlockingQueue, words));
         }
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            LOGGER.error(e.getMessage(), e);
-        }
+        Mockito.times(2000);
         assertEquals(0, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
         LOGGER.warn(stringResultBlockingQueue.toString());
     }
 
+    @Test
+    void checksNoEmptyOfBlockingQueueTest() {
+        resourceReader.run();
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 3; i++) {
+            executorService.submit(new ResourceHandler(resourcesBlockingQueue, stringResultBlockingQueue, words));
+        }
+
+        Mockito.times(2000);
+        assertTrue(!stringResultBlockingQueue.isEmpty());
+        LOGGER.warn(resourcesBlockingQueue.toString());
+        LOGGER.warn(stringResultBlockingQueue.toString());
+    }
 }
