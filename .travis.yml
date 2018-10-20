@@ -32,6 +32,6 @@ addons:
 script:
 - ./gradlew assemble
 - ./gradlew check --rerun-tasks
-- ./gradlew clean build
-#- sonar-scanner
-#- rm -rf .scannerwork
+#- ./gradlew clean build
+- sonar-scanner
+- rm -rf .scannerwork
