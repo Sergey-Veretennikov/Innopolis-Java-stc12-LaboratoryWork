@@ -3,6 +3,7 @@ package ru.innopolis.lw02;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -27,11 +28,7 @@ class ResourceReaderTest {
     @Test
     void checksSizeOfBlockingQueueTest() {
         resourceReader.run();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            LOGGER.error(e.getMessage(), e);
-        }
+        Mockito.times(2000);
         assertEquals(3, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
     }
