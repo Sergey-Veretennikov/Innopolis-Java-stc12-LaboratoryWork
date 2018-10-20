@@ -1,17 +1,9 @@
 package ru.innopolis.lw02;
 
 import org.apache.log4j.Logger;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ResourceHandlerTest {
     private static final Logger LOGGER = Logger.getLogger(ResourceReaderTest.class);
@@ -24,7 +16,7 @@ class ResourceHandlerTest {
     private ResourceReader resourceReader;
     private ResourceHandler resourceHandler;
 
-    @BeforeEach
+/*    @BeforeEach
     void setUpClass() {
         LOGGER.warn("\u001B[34m" + "Test starting" + "\u001B[0m");
         resourceReader = new ResourceReader(new String[]{PATH1, PATH2, PATH3}, resourcesBlockingQueue);
@@ -59,5 +51,5 @@ class ResourceHandlerTest {
         assertTrue(!stringResultBlockingQueue.isEmpty());
         LOGGER.warn(resourcesBlockingQueue.toString());
         LOGGER.warn(stringResultBlockingQueue.toString());
-    }
+    }*/
 }
