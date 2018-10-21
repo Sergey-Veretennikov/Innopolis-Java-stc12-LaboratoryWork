@@ -3,7 +3,6 @@ package ru.innopolis.lw02;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -59,7 +58,12 @@ class ResourceHandlerTest {
             executorService.submit(new ResourceHandler(resourcesBlockingQueue, stringResultBlockingQueue, words));
         }
 
-        Mockito.times(2000);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            LOGGER.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
+        }
         assertTrue(!stringResultBlockingQueue.isEmpty());
         LOGGER.warn(resourcesBlockingQueue.toString());
         LOGGER.warn(stringResultBlockingQueue.toString());

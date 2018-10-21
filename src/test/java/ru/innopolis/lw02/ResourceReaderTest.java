@@ -3,7 +3,6 @@ package ru.innopolis.lw02;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -14,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ResourceReaderTest {
     private static final Logger LOGGER = Logger.getLogger(ResourceReaderTest.class);
     private static final BlockingQueue<RepositoryResources> resourcesBlockingQueue = new ArrayBlockingQueue<>(10);
-    private final String PATH1 = "file:" + "stevenson_treasure_island_txt.txt";
-    private final String PATH2 = "file:" + "stoker_dracula_txt.txt";
-    private final String PATH3 = "file:" + "twain_tom_sawyer_txt.txt";
+    private static final String PATH1 = "file:stevenson_treasure_island_txt.txt";
+    private static final String PATH2 = "file:stoker_dracula_txt.txt";
+    private static final String PATH3 = "file:twain_tom_sawyer_txt.txt";
     private ResourceReader resourceReader;
 
     @BeforeEach
@@ -29,7 +28,12 @@ class ResourceReaderTest {
     void checksSizeOfBlockingQueueTest() {
         resourceReader.run();
 
-        Mockito.times(2000);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            LOGGER.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
+        }
 
         assertEquals(3, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
