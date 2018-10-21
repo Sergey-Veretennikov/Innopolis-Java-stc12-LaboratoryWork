@@ -28,7 +28,9 @@ class ResourceReaderTest {
     @Test
     void checksSizeOfBlockingQueueTest() {
         resourceReader.run();
+
         Mockito.times(2000);
+
         assertEquals(3, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
     }
@@ -44,6 +46,8 @@ class ResourceReaderTest {
         assertEquals(PATH2, path[1]);
         assertEquals(PATH3, path[2]);
         LOGGER.warn(resourcesBlockingQueue.toString());
+
+
     }
 
     @Test
