@@ -43,6 +43,7 @@ class ResourceHandlerTest {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             LOGGER.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
         assertEquals(0, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
