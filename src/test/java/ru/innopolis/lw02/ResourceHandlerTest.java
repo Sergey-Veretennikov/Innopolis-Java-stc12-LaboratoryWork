@@ -18,11 +18,10 @@ class ResourceHandlerTest {
     private static final BlockingQueue<RepositoryResources> resourcesBlockingQueue = new ArrayBlockingQueue<>(10);
     private static final BlockingQueue<String> stringResultBlockingQueue = new ArrayBlockingQueue<>(10);
     private static final String[] words = {"little", "Xhmkuiapy", "DISAPPEARS"};
-    private static final String PATH1 = "file:" + "stevenson_treasure_island_txt.txt";
-    private static final String PATH2 = "file:" + "stoker_dracula_txt.txt";
-    private static final String PATH3 = "file:" + "twain_tom_sawyer_txt.txt";
+    private static final String PATH1 = "file:stevenson_treasure_island_txt.txt";
+    private static final String PATH2 = "file:stoker_dracula_txt.txt";
+    private static final String PATH3 = "file:twain_tom_sawyer_txt.txt";
     private ResourceReader resourceReader;
-    private ResourceHandler resourceHandler;
 
     @BeforeEach
     void setUpClass() {
@@ -43,7 +42,7 @@ class ResourceHandlerTest {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
         assertEquals(0, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
