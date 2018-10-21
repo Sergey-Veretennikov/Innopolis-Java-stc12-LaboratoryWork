@@ -17,10 +17,10 @@ class ResourceHandlerTest {
     private static final Logger LOGGER = Logger.getLogger(ResourceReaderTest.class);
     private static final BlockingQueue<RepositoryResources> resourcesBlockingQueue = new ArrayBlockingQueue<>(10);
     private static final BlockingQueue<String> stringResultBlockingQueue = new ArrayBlockingQueue<>(10);
-    private final String[] words = {"little", "Xhmkuiapy", "DISAPPEARS"};
-    private final String PATH1 = "file:" + "stevenson_treasure_island_txt.txt";
-    private final String PATH2 = "file:" + "stoker_dracula_txt.txt";
-    private final String PATH3 = "file:" + "twain_tom_sawyer_txt.txt";
+    private static final String[] words = {"little", "Xhmkuiapy", "DISAPPEARS"};
+    private static final String PATH1 = "file:" + "stevenson_treasure_island_txt.txt";
+    private static final String PATH2 = "file:" + "stoker_dracula_txt.txt";
+    private static final String PATH3 = "file:" + "twain_tom_sawyer_txt.txt";
     private ResourceReader resourceReader;
     private ResourceHandler resourceHandler;
 
