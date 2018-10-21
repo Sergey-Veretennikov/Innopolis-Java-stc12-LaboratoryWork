@@ -40,7 +40,11 @@ class ResourceHandlerTest {
             executorService.submit(new ResourceHandler(resourcesBlockingQueue, stringResultBlockingQueue, words));
         }
 
-        Mockito.times(2000);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         assertEquals(0, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
         LOGGER.warn(stringResultBlockingQueue.toString());
