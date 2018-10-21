@@ -1,4 +1,4 @@
-package lw02;
+package ru.innopolis.lw02;
 
 import org.apache.log4j.Logger;
 
@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * скачивает и в зависимости от характеристики Small file или Large file обрабатывает его в одном или нескольких
  * потоках, результат складывает в другую ArrayBlockingQueue.
  */
-public class ResourceHandler implements Runnable {
+class ResourceHandler implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(ResourceHandler.class);
     private final BlockingQueue<RepositoryResources> resourcesBlockingQueue;
     private final BlockingQueue<String> stringResultBlockingQueue;
@@ -77,7 +77,7 @@ public class ResourceHandler implements Runnable {
         stringResultBlockingQueue.put("EXIT");
     }
 
-    private Thread exit() {
+    private Runnable exit() {
         return new Thread(() -> {
             try {
                 stringResultBlockingQueue.put("EXIT");
@@ -88,7 +88,7 @@ public class ResourceHandler implements Runnable {
         });
     }
 
-    private Thread analyzes(List<String> list, RepositoryResources repositoryResources) {
+    private Runnable analyzes(List<String> list, RepositoryResources repositoryResources) {
         return new Thread(() -> {
             for (String stringLine : new ArrayList<>(list)) {
                 String[] strings = stringLine.split("([.!?;]\\\\s|\"|<|>|\\\\n|\\\\r)");//([A-Z|А-Я|Ё]{1}[а-я|ё|\w\s,-;:\(\)]+[\.\?\!]) [.!?;]\\s|\"|<|>|\\n|\\r

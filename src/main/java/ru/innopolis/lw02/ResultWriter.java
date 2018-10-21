@@ -1,4 +1,4 @@
-package lw02;
+package ru.innopolis.lw02;
 
 import org.apache.log4j.Logger;
 
@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Поток, который получает результат ArrayBlockingQueue и записывает в файл.
  */
-public class ResultWriter implements Runnable {
+class ResultWriter implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(ResultWriter.class);
     private final String filePath;
     private final String[] sources;

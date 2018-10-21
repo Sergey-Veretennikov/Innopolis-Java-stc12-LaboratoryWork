@@ -1,9 +1,9 @@
-package lw02;
+package ru.innopolis.lw02;
 
 import java.io.File;
 import java.util.Objects;
 
-public class Main {
+class Main {
     static long t0;
 
     public static void main(String[] args) {
