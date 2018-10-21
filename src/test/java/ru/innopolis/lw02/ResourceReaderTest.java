@@ -34,6 +34,8 @@ class ResourceReaderTest {
         } catch (InterruptedException e) {
             LOGGER.error(e.getMessage(), e);
         }
+
+
         assertEquals(3, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
     }
