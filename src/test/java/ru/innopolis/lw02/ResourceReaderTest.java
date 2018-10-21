@@ -49,6 +49,8 @@ class ResourceReaderTest {
         assertEquals(PATH2, path[1]);
         assertEquals(PATH3, path[2]);
         LOGGER.warn(resourcesBlockingQueue.toString());
+
+
     }
 
     @Test
