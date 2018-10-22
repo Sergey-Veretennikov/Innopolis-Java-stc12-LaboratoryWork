@@ -3,7 +3,6 @@ package ru.innopolis.lw02;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -11,7 +10,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ResourceHandlerTest {
     private static final Logger LOGGER = Logger.getLogger(ResourceReaderTest.class);
@@ -50,7 +48,7 @@ class ResourceHandlerTest {
         LOGGER.warn(stringResultBlockingQueue.toString());
     }
 
-    @Test
+/*    @Test
     void checksNoEmptyOfBlockingQueueTest() {
         resourceReader.run();
 
@@ -63,5 +61,5 @@ class ResourceHandlerTest {
         assertTrue(!stringResultBlockingQueue.isEmpty());
         LOGGER.warn(resourcesBlockingQueue.toString());
         LOGGER.warn(stringResultBlockingQueue.toString());
-    }
+    }*/
 }
