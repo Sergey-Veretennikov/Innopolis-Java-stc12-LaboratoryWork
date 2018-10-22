@@ -10,7 +10,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ResourceHandlerTest {
@@ -30,7 +29,7 @@ class ResourceHandlerTest {
     }
 
 
-    @Test
+/*    @Test
     void checksSizeOfResourcesBlockingQueueTest() {
         resourceReader.run();
 
@@ -48,7 +47,7 @@ class ResourceHandlerTest {
         assertEquals(0, resourcesBlockingQueue.size());
         LOGGER.warn(resourcesBlockingQueue.toString());
         LOGGER.warn(stringResultBlockingQueue.toString());
-    }
+    }*/
 
     @Test
     void checksNoEmptyOfBlockingQueueTest() {
