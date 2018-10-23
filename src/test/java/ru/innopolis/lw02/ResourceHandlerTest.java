@@ -29,7 +29,6 @@ class ResourceHandlerTest {
         resourceReader = new ResourceReader(new String[]{PATH1, PATH2, PATH3}, resourcesBlockingQueue);
     }
 
-
     @Test
     void checksSizeOfResourcesBlockingQueueTest() {
         resourceReader.run();
